@@ -1,10 +1,10 @@
 # 环境搭建
 
-环境的部署主要分为两部分，Superset部分和数据复制部分。使用Docker部署，所以在部署前需要一定的Docker知识，并确保你已经安装了docker,可以参考[这篇文章](ubuntu-22.0.4-huan-jing-pei-zhi.md#id-5-an-zhuang-docker)。
+环境的部署主要分为两部分，Superset部分和数据复制部分。使用Docker部署，所以在部署前需要一定的Docker知识，并确保你已经安装了docker,可以参考[这篇文章](../../qi-ta-wen-dang/ubuntu-22.0.4-huan-jing-pei-zhi.md#id-5-an-zhuang-docker)。
 
 ### 数据复制
 
-{% file src="../.gitbook/assets/clickhouse-sink-connect.tar" %}
+{% file src="../../.gitbook/assets/clickhouse-sink-connect.tar" %}
 clickhouse-sink-connect
 {% endfile %}
 
@@ -40,6 +40,28 @@ docker compose up
 #### 注册连接器
 
 在注册连接器之前查看你的数据库中是否启动了Debizium所需的CDC相关配置，这里主要介绍postgres的配置。其他的可以查看官方文档，如[Mysql设置](https://debezium.io/documentation/reference/2.5/connectors/mysql.html#setting-up-mysql)。
+
+
+
+### BI 报表 (使用amancevice/superset)
+
+{% file src="../../.gitbook/assets/superset (1).tar" %}
+superset and clickhouse
+{% endfile %}
+
+BI报表部分将ClickHouse与Superset放在了一起布置，在这里superset使用的是amancevice/superset，之所以使用该版本的superset是因为官方版本总是会在初始化这部分发生错误，初始不完全导致部署失败。废话不多说，准备开始！
+
+
+
+tar -xvf superset.tar解压并进入到superset目录
+
+```bash
+-rwxr-xr-x 1 root root   66 May  4 08:27 create_image.sh*
+-rw-r--r-- 1 root root 1132 May  4 08:28 docker-compose.yml
+-rw-r--r-- 1 root root  134 May  4 08:27 Dockerfile
+-rw-r--r-- 1 root root  907 May  4 08:27 superset_config.py
+-rw-r--r-- 1 root root 6207 May  4 08:27 users.xml
+```
 
 
 

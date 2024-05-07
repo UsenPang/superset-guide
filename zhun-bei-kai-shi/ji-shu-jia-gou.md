@@ -4,7 +4,7 @@
 
 
 
-
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>BI 系统架构图</p></figcaption></figure>
 
 
 
