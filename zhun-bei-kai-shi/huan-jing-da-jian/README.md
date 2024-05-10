@@ -1,6 +1,6 @@
 # 环境搭建
 
-环境的部署主要分为两部分，Superset部分和数据复制部分。使用Docker部署，所以在部署前需要一定的Docker知识，并确保你已经安装了docker,可以参考[这篇文章](../../qi-ta-wen-dang/ubuntu-22.0.4-huan-jing-pei-zhi.md#id-5-an-zhuang-docker)。
+环境的部署主要分为两部分，Superset部分和数据复制部分。使用Docker部署，所以在部署前需要一定的Docker知识，并确保你已经安装了docker,可以参考[这篇文章](../../qi-ta-gong-ju-yu-wen-dang/ubuntu-22.0.4-huan-jing-pei-zhi.md#id-5-an-zhuang-docker)。
 
 ### 数据复制
 
