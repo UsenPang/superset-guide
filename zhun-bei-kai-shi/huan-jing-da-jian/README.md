@@ -43,7 +43,7 @@ docker compose up
 
 
 
-### BI 报表 (使用amancevice/superset)
+### BI  (使用amancevice/superset)
 
 {% file src="../../.gitbook/assets/superset (1).tar" %}
 superset and clickhouse
@@ -62,6 +62,32 @@ tar -xvf superset.tar解压并进入到superset目录
 -rw-r--r-- 1 root root  907 May  4 08:27 superset_config.py
 -rw-r--r-- 1 root root 6207 May  4 08:27 users.xml
 ```
+
+
+
+**Dockerfile** : 这个文件主要用来构建自己的superset镜像，这个文件里面只有一条构建命令，`RUN pip install clickhouse-connect -i https://pypi.tuna.tsinghua.edu.cn/simple`，主要用来下载clickhouse的连接器，使superset能够连接到clickhouse。
+
+**create\_image.sh** :   这个文件里面只有一条命令`docker build -t "tongxin/superset-clickhouse:4.0.0" .` 这条命令是docker 创建镜像的命令，也可以直接在控制台输入这条命令。
+
+**superset\_config.py**:  它是superset的配置文件，可以通过该文件配置superset的行为；可以看到这个文件加了一些翻译、开启Jinja模板的配置。
+
+**users.xml** : 它是clickhouse的配置文件，包含clickhouse的用户账户行为配置。
+
+
+
+#### 启动容器
+
+在superset目录中使用以下命令
+
+```bash
+docker compose up
+```
+
+在浏览器访问 http://<mark style="color:red;">yourhost</mark>:8088 ,账号密码：admin/admin&#x20;
+
+
+
+&#x20;
 
 
 
