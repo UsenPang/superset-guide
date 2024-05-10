@@ -5,6 +5,7 @@
   * [环境搭建](zhun-bei-kai-shi/huan-jing-da-jian/README.md)
     * [clickhouse sink connect](zhun-bei-kai-shi/huan-jing-da-jian/clickhouse-sink-connect.md)
     * [Supserset](zhun-bei-kai-shi/huan-jing-da-jian/supserset.md)
+  * [创建你的第一个仪表板​](zhun-bei-kai-shi/chuang-jian-ni-de-di-yi-ge-yi-biao-ban.md)
 * [基础知识](ji-chu-zhi-shi/README.md)
   * [高级分析](ji-chu-zhi-shi/gao-ji-fen-xi.md)
   * [使用WITH语句简化查询](ji-chu-zhi-shi/shi-yong-with-yu-ju-jian-hua-cha-xun.md)
