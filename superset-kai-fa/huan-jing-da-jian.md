@@ -27,9 +27,18 @@ docker compose up
 
 首先确保你的python版本是3.9、3.10或3.11，然后执行：
 
-```bash
-# 创建一个虚拟环境并激活
-python3 -m venv venv 
+<pre class="language-bash"><code class="lang-bash"><strong>#安装一些必要的依赖，不然在执行下面命令pip install -r requirements/development.txt时会失败。
+</strong><strong>apt-get update -qq &#x26;&#x26; apt-get install -yqq --no-install-recommends \
+</strong>        curl \
+        default-libmysqlclient-dev \
+        libsasl2-dev \
+        libsasl2-modules-gssapi-mit \
+        libpq-dev \
+        libecpg-dev \
+        libldap2-dev 
+        
+<strong># 创建一个虚拟环境并激活
+</strong>python3 -m venv venv 
 source venv/bin/activate
 
 # 安装外部依赖
@@ -57,7 +66,7 @@ superset load-examples
 
 # 从虚拟环境内部启动 Flask 开发 Web 服务器。
 superset run -p 8088 --with-threads --reload --debugger --debug
-```
+</code></pre>
 
 
 
@@ -103,18 +112,7 @@ nvm use --lts
 
 
 
-安装一些必要的依赖，不然在执行npm run build构建前端资源时会失败。
 
-```sh
-apt-get update -qq && apt-get install -yqq --no-install-recommends \
-        curl \
-        default-libmysqlclient-dev \
-        libsasl2-dev \
-        libsasl2-modules-gssapi-mit \
-        libpq-dev \
-        libecpg-dev \
-        libldap2-dev \
-```
 
 
 
