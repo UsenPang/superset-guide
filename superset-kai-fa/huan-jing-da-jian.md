@@ -27,8 +27,8 @@ docker compose up
 
 首先确保你的python版本是3.9、3.10或3.11，然后执行：
 
-<pre class="language-bash"><code class="lang-bash"><strong>#安装一些必要的依赖，不然在执行下面命令pip install -r requirements/development.txt时会失败。
-</strong><strong>apt-get update -qq &#x26;&#x26; apt-get install -yqq --no-install-recommends \
+<pre class="language-bash"><code class="lang-bash">#安装一些必要的依赖，不然在执行下面命令pip install -r requirements/development.txt时会失败。
+<strong>apt-get update -qq &#x26;&#x26; apt-get install -yqq --no-install-recommends \
 </strong>        curl \
         default-libmysqlclient-dev \
         libsasl2-dev \
@@ -37,8 +37,11 @@ docker compose up
         libecpg-dev \
         libldap2-dev 
         
+apt-get install python3-dev  build-essential pkg-config 
+
 <strong># 创建一个虚拟环境并激活
-</strong>python3 -m venv venv 
+</strong>cd superset
+python3 -m venv venv 
 source venv/bin/activate
 
 # 安装外部依赖
@@ -49,6 +52,7 @@ pip install -e .
 
 #生成一个密匙
 openssl rand -base64 42
+
 #复制生成的密匙，设置环境变量
 export SUPERSET_SECRET_KEY={your secret key}
 
@@ -97,18 +101,17 @@ make superset
 
 建议使用 nvm 管理节点环境。使用nvm安装nvm与node：
 
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+<pre class="language-bash"><code class="lang-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
 
 incase it shows '-bash: nvm: command not found'
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+<strong>[ -s "$NVM_DIR/nvm.sh" ] &#x26;&#x26; \. "$NVM_DIR/nvm.sh"  # This loads nvm
+</strong>[ -s "$NVM_DIR/bash_completion" ] &#x26;&#x26; \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 cd superset-frontend
 nvm install --lts
 nvm use --lts
-```
+</code></pre>
 
 
 
@@ -116,7 +119,7 @@ nvm use --lts
 
 
 
-#### 安装外部依赖
+#### 安装依赖模块
 
 ```bash
 # 进入到superset-frontend目录
