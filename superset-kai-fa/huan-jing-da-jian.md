@@ -103,14 +103,14 @@ make superset
 
 <pre class="language-bash"><code class="lang-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
 
-incase it shows '-bash: nvm: command not found'
+#如果使用nvm命令出现 '-bash: nvm: command not found',请执行下面的命令或打开一个新的shell
 export NVM_DIR="$HOME/.nvm"
 <strong>[ -s "$NVM_DIR/nvm.sh" ] &#x26;&#x26; \. "$NVM_DIR/nvm.sh"  # This loads nvm
 </strong>[ -s "$NVM_DIR/bash_completion" ] &#x26;&#x26; \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 cd superset-frontend
-nvm install --lts
-nvm use --lts
+nvm install
+nvm use
 </code></pre>
 
 
