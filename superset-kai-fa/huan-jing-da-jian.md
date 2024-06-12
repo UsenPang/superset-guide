@@ -50,11 +50,11 @@ pip install -r requirements/development.txt
 # 以可编辑（开发）模式安装 Superset
 pip install -e .
 
-#生成一个密匙
-openssl rand -base64 42
+#生成一个密匙，并加入到环境变量
+echo 'export SUPERSET_SECRET_KEY="`(openssl rand -base64 42)`"' > \
+        /etc/profile.d/superset_secret_key.sh
 
-#复制生成的密匙，设置环境变量
-export SUPERSET_SECRET_KEY={your secret key}
+source /etc/profile
 
 # 初始化数据库
 superset db upgrade
@@ -140,8 +140,6 @@ npm run dev-server
 ```
 
 浏览器访问[http://localhost:9000](http://localhost:9000)
-
-
 
 
 
