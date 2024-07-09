@@ -143,17 +143,65 @@ npm run dev-server
 
 
 
+### FAQ
+
+#### 问题
+
+为什么使用docker compose启动登录后是一个空白页面？
+
+<div data-full-width="true">
+
+<figure><img src="../.gitbook/assets/image (17).png" alt="" width="375"><figcaption></figcaption></figure>
+
+</div>
+
+并且容器出现错误信息
+
+Superset\_app:
+
+```
+2023-08-31 08:26:20,442:INFO:werkzeug:192.168.0.1 - - [31/Aug/2023 08:26:20] "GET /static/appbuilder/datepicker/bootstrap-datepicker.js HTTP/1.1" 200 -
+2023-08-31 08:26:20,443:WARNING:superset.views.base:HTTPException
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 713, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/usr/local/lib/python3.9/site-packages/flask/scaffold.py", line 331, in send_static_file
+    return send_from_directory(
+  File "/usr/local/lib/python3.9/site-packages/flask/helpers.py", line 590, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/usr/local/lib/python3.9/site-packages/werkzeug/utils.py", line 578, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2023-08-31 08:26:20,457:INFO:werkzeug:192.168.0.1 - - [31/Aug/2023 08:26:20] "GET /static/appbuilder/js/ab.js HTTP/1.1" 200 -
+2023-08-31 08:26:20,458:INFO:werkzeug:192.168.0.1 - - [31/Aug/2023 08:26:20] "GET /static/appbuilder/select2/select2.js HTTP/1.1" 200 -
+2023-08-31 08:26:20,473:INFO:werkzeug:192.168.0.1 - - [31/Aug/2023 08:26:20] "GET /static/assets/images/superset-logo-horiz.png HTTP/1.1" 404 -
+```
+
+Superset\_node (Exit status 251):
+
+```
+npm ERR! code EIO
+npm ERR! syscall rename
+npm ERR! path /app/superset-frontend/node_modules/sha.js
+npm ERR! dest /app/superset-frontend/node_modules/.sha.js-sPyHcmzN
+npm ERR! errno -5
+npm ERR! EIO: i/o error, rename '/app/superset-frontend/node_modules/sha.js' -> '/app/superset-frontend/node_modules/.sha.js-sPyHcmzN'
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2023-08-31T08_25_51_287Z-debug-0.log
+```
 
 
 
+1. superset\_app的报错指的是找不到静态资源
+2. superset\_node的报错指的是该目录下已经有这个文件了，将会被重命名为.sha.js-sPyHcmzN
+
+#### 如何解决？
 
 
 
-
-
-
-
-
-
-
-
+其实最主要的问题还是出现在npm，npm在安装依赖是发现已经有这个文件，文件冲突了，导致前端的资源构建失败，出现问题1，然后登录之后返回空白的页面,。所以只需要将这些冲突的文件删掉就可以了，为了减少麻烦，在superset-frontend通过执行`find . -type d -name 'node_modules'`命令删除所有的node\_modules模块。docker compose重新运行。
