@@ -1,2 +1,0 @@
-# clickhouse sink connect
-

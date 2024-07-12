@@ -1,3 +1,7 @@
+---
+description: 本章主要指导如何使用docker快速搭建superset生产环境，以及安装clickhouse连接器驱动。
+---
+
 # Supserset
 
 ### 1.克隆 superset
@@ -10,8 +14,12 @@ git clone https://github.com/apache/superset.git
 
 ```
 cd superset/docker
-#不加载案例数据
-echo SUPERSET_LOAD_EXAMPLES=no >> .env-local 
+
+cat >> .env-local << EOF
+SUPERSET_ENV=production
+SUPERSET_LOAD_EXAMPLES=no
+EOF
+
 #配置密匙
 echo export SUPERSET_SECRET_KEY="`(openssl rand -base64 42)`" >> .env-local 
 ```
@@ -45,7 +53,7 @@ USER root
 RUN pip install clickhouse-connect -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-superset版本目前是4.0.2，读者根据自己当前版本选择
+写这篇文章时，superset版本目前是4.0.2，读者根据自己当前版本选择
 
 ### 5.构建新的镜像
 
@@ -59,7 +67,7 @@ docker build -t tongxin/superset-clickhouse:4.0.2 .
 
 改动如下，删除红色区域的部分，添加绿色部分。也可以使用上面我修改好的文件。
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### 7.启动容器
 
