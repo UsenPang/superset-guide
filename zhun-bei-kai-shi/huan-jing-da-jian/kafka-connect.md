@@ -93,3 +93,5 @@ TOPICS_REGEX="postgres.*"
 
 上面是基于脚本来创建连接器，也可以在UI界面创建连接器
 
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+

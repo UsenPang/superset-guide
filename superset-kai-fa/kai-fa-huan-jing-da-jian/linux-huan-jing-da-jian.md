@@ -143,9 +143,7 @@ npm run dev-server
 
 
 
-### FAQ
-
-#### 问题
+### 问题1
 
 为什么使用docker compose启动登录后是一个空白页面？
 
@@ -205,3 +203,102 @@ npm ERR!     /root/.npm/_logs/2023-08-31T08_25_51_287Z-debug-0.log
 
 
 其实最主要的问题还是出现在npm，npm在安装依赖是发现已经有这个文件，文件冲突了，导致前端的资源构建失败，出现问题1，然后登录之后返回空白的页面,。所以只需要将这些冲突的文件删掉就可以了，为了减少麻烦，在superset-frontend通过执行`find . -type d -name 'node_modules'`命令删除所有的node\_modules模块。docker compose重新运行。
+
+
+
+### 问题2
+
+superset\_init报错，并且登录页面登录不上去
+
+```
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/bin/superset", line 8, in <module>
+    sys.exit(superset())
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/flask/cli.py", line 358, in decorator
+    return __ctx.invoke(f, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/flask_migrate/cli.py", line 149, in upgrade
+    _upgrade(directory, revision, sql, tag, x_arg)
+  File "/usr/local/lib/python3.10/site-packages/flask_migrate/__init__.py", line 98, in wrapped
+    f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/flask_migrate/__init__.py", line 185, in upgrade
+    command.upgrade(config, revision, sql=sql, tag=tag)
+  File "/usr/local/lib/python3.10/site-packages/alembic/command.py", line 403, in upgrade
+    script.run_env()
+  File "/usr/local/lib/python3.10/site-packages/alembic/script/base.py", line 583, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/usr/local/lib/python3.10/site-packages/alembic/util/pyfiles.py", line 95, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/usr/local/lib/python3.10/site-packages/alembic/util/pyfiles.py", line 113, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/app/superset/extensions/../migrations/env.py", line 127, in <module>
+    run_migrations_online()
+  File "/app/superset/extensions/../migrations/env.py", line 119, in run_migrations_online
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/usr/local/lib/python3.10/site-packages/alembic/runtime/environment.py", line 948, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/usr/local/lib/python3.10/site-packages/alembic/runtime/migration.py", line 627, in run_migrations
+    step.migration_fn(**kw)
+  File "/app/superset/migrations/versions/2023-09-15_12-58_4b85906e5b91_add_on_delete_cascade_for_dashboard_roles.py", line 50, in upgrade
+    redefine(foreign_key, on_delete="CASCADE")
+  File "/app/superset/migrations/shared/constraints.py", line 57, in redefine
+    with op.batch_alter_table(foreign_key.table, naming_convention=conv) as batch_op:
+  File "/usr/local/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/usr/local/lib/python3.10/site-packages/alembic/operations/base.py", line 398, in batch_alter_table
+    impl.flush()
+  File "/usr/local/lib/python3.10/site-packages/alembic/operations/batch.py", line 116, in flush
+    fn(*arg, **kw)
+  File "/usr/local/lib/python3.10/site-packages/alembic/ddl/impl.py", line 350, in drop_constraint
+    self._exec(schema.DropConstraint(const))
+  File "/usr/local/lib/python3.10/site-packages/alembic/ddl/impl.py", line 207, in _exec
+    return conn.execute(construct, multiparams)
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/sql/ddl.py", line 80, in _execute_on_connection
+    return connection._execute_ddl(
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1477, in _execute_ddl
+    ret = self._execute_context(
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.errors.DeadlockDetected) deadlock detected
+DETAIL:  Process 77 waits for AccessExclusiveLock on relation 16405 of database 16384; blocked by process 79.
+Process 79 waits for AccessShareLock on relation 16413 of database 16384; blocked by process 77.
+HINT:  See server log for query details.
+
+[SQL: ALTER TABLE dashboard_roles DROP CONSTRAINT dashboard_roles_role_id_fkey]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+
+```
+
+
+
+解决这个问题也很简单，使用`docker compose restart superset-init` 重启一下superset\_init就好了
