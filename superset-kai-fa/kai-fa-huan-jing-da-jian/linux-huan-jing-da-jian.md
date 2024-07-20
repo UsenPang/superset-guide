@@ -19,11 +19,13 @@ docker compose up
 
 这将拉取/构建 docker 映像并运行服务集群，并将本地代码挂在到容器中，所以在本地的代码修改都会被映射到容器中，使容器更新。
 
+**注意**：使用docker-compose启动的superset服务并不能立马访问，访问8088端口时会出现空白页，这是因为前端资源还没有构建完成导致的，等个大概十来分钟再访问试试。构建非常慢，甚至卡住了？建议查看一下内存，确保在10G以上，因为superset前端使用的是webpack构建的，所以在build时非常消耗内存。
 
 
-## 本地部署
 
-### Flask Server
+## 本地源码部署
+
+### 后端 Flask Server
 
 首先确保你的python版本是3.9、3.10或3.11，然后执行：
 
@@ -77,29 +79,40 @@ superset run -p 8088 --with-threads --reload --debugger --debug
 或者使用Makefile安装
 
 ```bash
-# Create a virtual environment and activate it (recommended)
-python3 -m venv venv # setup a python3 virtualenv
+#安装一些必要的依赖
+apt-get update -qq && apt-get install -yqq --no-install-recommends \
+        curl \
+        default-libmysqlclient-dev \
+        libsasl2-dev \
+        libsasl2-modules-gssapi-mit \
+        libpq-dev \
+        libecpg-dev \
+        libldap2-dev 
+        
+apt-get install python3-dev  build-essential pkg-config 
+
+# 创建虚拟环境并且激活
+python3 -m venv venv
 source venv/bin/activate
 
-# install pip packages + pre-commit
+#Makefile安装
 make install
 
-# Install superset pip packages and setup env only
 make superset
 ```
 
 
 
-### 前端
+### 前端 Superset-frontend
 
 #### 环境准备
 
-首先，确保您使用的是以下版本的 Node.js 和 npm
+首先，确认 Node.js 和 npm版本
 
 * `Node.js`: Version 18
 * `npm`: Version 10
 
-建议使用 nvm 管理节点环境。使用nvm安装nvm与node：
+建议使用 nvm 管理节点环境。使用nvm安装node：
 
 <pre class="language-bash"><code class="lang-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
 
@@ -115,10 +128,6 @@ nvm use
 
 
 
-
-
-
-
 #### 安装依赖模块
 
 ```bash
@@ -129,7 +138,7 @@ cd superset-frontend
 npm ci
 ```
 
-在执行npm run build构建前端资源时会消耗很大的内存，如果使用的是虚拟机的话建议将内存调高点，不然会一直卡住。
+在执行npm run build构建前端资源时会消耗很多的内存，如果使用的是虚拟机的话建议将内存调高点，不然会一直卡住。
 
 ```bash
 #构建前端资源
@@ -143,7 +152,9 @@ npm run dev-server
 
 
 
-### 问题1
+### FAQ
+
+**问题1**
 
 为什么使用docker compose启动登录后是一个空白页面？
 
@@ -195,18 +206,16 @@ npm ERR!     /root/.npm/_logs/2023-08-31T08_25_51_287Z-debug-0.log
 
 
 
+解决：
+
 1. superset\_app的报错指的是找不到静态资源
 2. superset\_node的报错指的是该目录下已经有这个文件了，将会被重命名为.sha.js-sPyHcmzN
 
-#### 如何解决？
+其实最主要的问题还是出现在npm，npm在安装依赖是发现已经有这个文件，文件冲突了，导致前端的资源构建失败，出现问题1，然后登录之后返回空白的页面,。所以只需要将这些冲突的文件删掉就可以了，为了减少麻烦，在superset-frontend通过执行`find . -type d -name "node_modules" -exec rm -rf {} +`命令删除所有的node\_modules模块。docker compose重新运行。
 
 
 
-其实最主要的问题还是出现在npm，npm在安装依赖是发现已经有这个文件，文件冲突了，导致前端的资源构建失败，出现问题1，然后登录之后返回空白的页面,。所以只需要将这些冲突的文件删掉就可以了，为了减少麻烦，在superset-frontend通过执行`find . -type d -name 'node_modules'`命令删除所有的node\_modules模块。docker compose重新运行。
-
-
-
-### 问题2
+**问题2**
 
 superset\_init报错，并且登录页面登录不上去
 
