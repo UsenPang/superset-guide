@@ -34,6 +34,7 @@
   * [开发环境搭建](superset-kai-fa/kai-fa-huan-jing-da-jian/README.md)
     * [Linux环境搭建](superset-kai-fa/kai-fa-huan-jing-da-jian/linux-huan-jing-da-jian.md)
     * [Windows 环境搭建](superset-kai-fa/kai-fa-huan-jing-da-jian/windows-huan-jing-da-jian.md)
+  * [Superset汉化](superset-kai-fa/superset-han-hua.md)
   * [开发工具](superset-kai-fa/kai-fa-gong-ju.md)
 * [其他工具与文档](qi-ta-gong-ju-yu-wen-dang/README.md)
   * [Ubuntu 22.0.4安装](qi-ta-gong-ju-yu-wen-dang/ubuntu-22.0.4-an-zhuang.md)
