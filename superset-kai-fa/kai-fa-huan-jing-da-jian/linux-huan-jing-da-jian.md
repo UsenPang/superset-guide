@@ -53,7 +53,7 @@ pip install -r requirements/development.txt
 pip install -e .
 
 #生成一个密匙，并加入到环境变量
-echo 'export SUPERSET_SECRET_KEY="`(openssl rand -base64 42)`"' > \
+echo export SUPERSET_SECRET_KEY=`(openssl rand -base64 42)` > \
         /etc/profile.d/superset_secret_key.sh
 
 source /etc/profile
