@@ -85,7 +85,7 @@ TOPICS_REGEX="postgres.*"
 
 在浏览器访问8089端口会看到你在kafka中的topic
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -93,5 +93,5 @@ TOPICS_REGEX="postgres.*"
 
 上面是基于脚本来创建连接器，也可以在UI界面创建连接器
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 

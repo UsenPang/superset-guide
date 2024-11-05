@@ -2,11 +2,11 @@
 
 我们可以看到在“高级分析”这一栏中，有滚动窗口、时间比较、重新采样这三个可选选项。
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 在这一部分将详细讲解这三个选项有什么作用，以及应用这三个选项之后的变化是怎样的。所有的讲解都是基于下面的指标来讲解。
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 上面这个指标筛选了2023-01-01\~2023-12-31之间的数据，并以月为时间粒度来计算“每月产生单据的数量”这个指标。
 
@@ -30,7 +30,7 @@
 
 在下面这个图中计算类型为“差异”，即2023年与2022年指标的差值。
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -40,7 +40,7 @@
 
 下图中计算类型为Percentage change(百分比变化)，即（2023年指标-2022年指标的比值）/2022年指标，可以通过这个计算类型来计算这年相对上一年的增长比例。
 
-<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

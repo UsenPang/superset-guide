@@ -12,7 +12,7 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 首先，我们需要建立数据库的连接，以便能够查询和可视化其中的数据。在右上角的 设置菜单下，选择测试连接，然后选择“+数据库”选项：
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 然后在数据库选项选择clickhouse connect :&#x20;
 
@@ -46,7 +46,7 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 然后点击保存按钮右侧的折叠图案，另存为数据集，为你的数据集起个名字
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 至此两种方式已经介绍完成，通过这两种方式你应该理解了物理数据集与虚拟数据集的区别。
 
@@ -58,11 +58,11 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 在图表界面点击创建图表，然后在弹出的页面中选择数据集以及图表模板，创建图表
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 现在，您将看到一个强大的工作流程，用于探索数据和迭代图表。
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * 左侧的数据集视图有一个列和指标列表，范围仅限于您选择的当前数据集。
 * 图表区域下方的数据预览还为您提供有用的数据上下文。
@@ -72,11 +72,11 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 点击右上角的保存按钮，添加到一个新的看板
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 可以看到将图表添加到了看板中
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 然后点击右上角的编辑仪表盘，然后，单击并拖动图表的右下角，直到图表布局到你喜欢的大小。
 
