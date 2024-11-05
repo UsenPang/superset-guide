@@ -4,6 +4,26 @@ description: github上下载源码在本地解压
 
 # Windows 环境搭建
 
+## 克隆仓库
+
+在 GitHub 上分叉存储库，然后克隆它。可以直接克隆主存储库，但无法发送拉取请求。
+
+在windows克隆superset之前运行：
+
+```
+#提交时转换为LF，检出时不转换
+git config --global core.autocrlf input
+```
+
+上面代码的作用是禁止git拉取代码时的换行符转换，防止将LF转换成CRLF（不用问我为什么，不这样做Eslint会报错）
+
+```
+git clone https://github.com/apache/superset.git
+cd superset
+```
+
+
+
 ## 后端
 
 环境依赖：python3.9、python3.10或python3.11
@@ -44,37 +64,71 @@ error: Microsoft Visual C++ 14.0 or greater is required.
 Get it with “Microsoft C++ Build Tools”: https://visualstudio.microsoft.com/visual-cpp-build-tools/ 
 ```
 
-安装C++ buildTools ，下载地址为[http://go.microsoft.com/fwlink/?LinkId=691126](http://go.microsoft.com/fwlink/?LinkId=691126)
 
 
+**解决办法**：
 
-**如果安装了C++ buildTools还是报错，那就只能visual studio全家桶了**
+下载构建工具并安装：https://visualstudio.microsoft.com/visual-cpp-build-tools/。
 
-https://visualstudio.microsoft.com/visual-cpp-build-tools/下载构建工具并安装。
+<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+安装好之后运行还是会报错：<mark style="background-color:red;">无法打开包括文件: “lber.h”: No such file or directory</mark>
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+```
+error: command 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.39.33519\bin\HostX86\x64\cl.exe' failed with exit code 2
 
-将相应的组件安装好后再运行一次
+work\python-ldap-3.4.4\Modules\common.h(15): fatal error C1083: 无法打开包括文件: “lber.h”: No such file or directory
+```
+
+安装 whl 包：去[Releases · cgohlke/python-ldap-build · GitHub](https://github.com/cgohlke/python-ldap-build/releases)  下载版本
+
+<figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+
+打开网站，下载需要的ldap版本，进入下载目录，运行pip install命令：
+
+```
+pip install ./python_ldap-3.4.4-cp311-cp311-win_amd64.whl
+```
 
 
 
 ## 前端
 
-建议使用node17或18版本
+#### **环境准备**
 
-想要快点的话使用cnpm去下载
+首先，确认 Node.js 和 npm版本
 
-<pre><code><strong>#安装cnpm
-</strong><strong>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</strong>
+cd superset/superset-frontend， 查看.nvmrc 文件中的版本信息。
+
+建议使用 nvm 管理节点环境。使用nvm安装node：[window下安装并使用nvm](https://blog.csdn.net/HuangsTing/article/details/113857145?fromshare=blogdetail\&sharetype=blogdetail\&sharerId=113857145\&sharerefer=PC\&sharesource=m0\_52029207\&sharefrom=from\_link)
+
+```bash
+# 使用nvm安装node
+cd superset-frontend
+nvm install
+nvm use
+```
+
+#### **安装依赖模块**
+
+```bash
+# 进入到superset-frontend目录
+cd superset-frontend
+
 #配置淘宝源
 npm config set registry https://registry.npm.taobao.org --global
 
-</code></pre>
+# 安装来自 `package-lock.json`的依赖
+npm ci
 
+#构建前端资源
+npm run build
 
+#构建成功后启动前端
+npm run dev-server
+```
+
+浏览器访问[http://localhost:9000](http://localhost:9000)
 
 
 
