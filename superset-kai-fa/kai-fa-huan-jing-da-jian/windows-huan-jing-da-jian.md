@@ -40,19 +40,19 @@ pip install -r requirements/development.txt
 pip install -e .
 
 # 初始化数据库
-python superset db upgrade
+superset db upgrade
 
 # 创建管理员用户
- fabmanager create-admin --app superset
+superset fab create-admin
 
 # 创建默认角色和权限
-python superset init
+superset init
 
 # 加载案例数据 ，在此之前必须创建管理员用户
-python superset load_examples
+superset load-examples
 
-# 启动 Flask 
-flask run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
+# 从虚拟环境内部启动 Flask 开发 Web 服务器。
+superset run -p 8088 --with-threads --reload --debugger --debug
 ```
 
 
@@ -80,7 +80,7 @@ error: command 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\V
 work\python-ldap-3.4.4\Modules\common.h(15): fatal error C1083: 无法打开包括文件: “lber.h”: No such file or directory
 ```
 
-安装 whl 包：去[Releases · cgohlke/python-ldap-build · GitHub](https://github.com/cgohlke/python-ldap-build/releases)  下载版本
+安装 whl 包：去[Releases · cgohlke/python-ldap-build · GitHub](https://github.com/cgohlke/python-ldap-build/releases)  下载对应的版本
 
 <figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
