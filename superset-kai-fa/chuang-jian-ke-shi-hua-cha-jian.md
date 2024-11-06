@@ -106,7 +106,7 @@ npm run dev-server
 
 
 
-## 可视化插件讲解
+## 了解可视化插件
 
 上面的内容来自官方文档翻译，经过上面的步骤我们完成了可视化插件的创建以及如何添加到superset中，接下来将详细讲解可视化插件文件夹下包含哪些内容，逐步揭开superset的面纱，如何开发自己的可视化插件。
 
@@ -149,6 +149,46 @@ buildQuery.ts的作用是将图表配置信息转换为QueryContext，服务器�
 用于定义superset创建图表时左侧的控制面板，它将设置传递给主组件，由主组件创建数据可视化查询。
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### **EchartsPie.tsx**
+
+定义的图表组件。
+
+
+
+### **index.ts**
+
+组合图表组件，配置组件的元数据。
+
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+
+这些元数据我们能够在superset新建图表中看到：
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+### **images**
+
+这个目录用于存放图表的缩略图。
+
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### **types.ts**
+
+定义组件内参数的类型
+
+
+
+## 源码讲解
+
+### **buildQuery.ts**
+
+### **transformProps.ts**
+
+### **controlPanel.tsx**
 
 该文件主要包括一个对象，其中包含可视化插件中使用的每个设置的数组。Superset 将这些设置作为props传递给插件，用于插件中的数据查询或其他可视化选项。让我们看看配置对象是如何定义控制面板元素的：
 
@@ -316,67 +356,7 @@ const config: ControlPanelConfig = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### **EchartsPie.tsx**
-
-定义的图表组件。
-
-
-
-### **index.ts**
-
-组合图表组件，配置组件的元数据。
-
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
-
-这些元数据我们能够在superset新建图表中看到：
-
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
-
-### **images**
-
-这个目录用于存放图表的缩略图。
-
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-
-
-### **types.ts**
-
-定义组件内参数的类型
-
-
-
-
-
-
-
-
-
-
 
 
 
