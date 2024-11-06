@@ -109,6 +109,24 @@ nvm install
 nvm use
 ```
 
+
+
+安装zstd，去github官方仓库下载：[https://github.com/facebook/zstd/releases](https://github.com/facebook/zstd/releases)
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+解压并配置环境变量
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+测试是否安装成功，打开命令行工具
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+
+
+
+
 #### **安装依赖模块**
 
 ```bash
@@ -121,6 +139,8 @@ npm config set registry https://registry.npm.taobao.org --global
 # 安装来自 `package-lock.json`的依赖
 npm ci
 
+
+# 请使用命令行工具cmd运行
 #构建前端资源
 npm run build
 

@@ -67,7 +67,7 @@ docker build -t tongxin/superset-clickhouse:4.0.2 .
 
 改动如下，删除红色区域的部分，添加绿色部分。也可以使用上面我修改好的文件。
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 7.启动容器
 

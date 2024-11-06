@@ -130,7 +130,7 @@ npm run dev-server
 
 定义查询数据的方式。每次打开图表时，图表会向服务器发起请求&#x20;http://example.com/api/v1/chart/data请求图表的数据，可以看到请求负载为：
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 buildQuery.ts的作用是将图表配置信息转换为QueryContext，服务器接收到queryContext去处理查询，然后将查询到的数据返回给图表。
 
@@ -146,7 +146,7 @@ buildQuery.ts的作用是将图表配置信息转换为QueryContext，服务器�
 
 用于定义superset创建图表时左侧的控制面板，它将设置传递给主组件，由主组件创建数据可视化查询。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 该文件主要包括一个对象，其中包含可视化插件中使用的每个设置的数组。Superset 将这些设置作为props传递给插件，用于插件中的数据查询或其他可视化选项。让我们看看配置对象是如何定义控制面板元素的：
 
@@ -348,7 +348,7 @@ const config: ControlPanelConfig = {
 
 组合图表组件，配置组件的元数据。
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 这些元数据我们能够在superset新建图表中看到：
 
@@ -358,7 +358,7 @@ const config: ControlPanelConfig = {
 
 这个目录用于存放图表的缩略图。
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

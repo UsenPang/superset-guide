@@ -46,7 +46,7 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 然后点击保存按钮右侧的折叠图案，另存为数据集，为你的数据集起个名字
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 至此两种方式已经介绍完成，通过这两种方式你应该理解了物理数据集与虚拟数据集的区别。
 
@@ -58,11 +58,11 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 在图表界面点击创建图表，然后在弹出的页面中选择数据集以及图表模板，创建图表
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 现在，您将看到一个强大的工作流程，用于探索数据和迭代图表。
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * 左侧的数据集视图有一个列和指标列表，范围仅限于您选择的当前数据集。
 * 图表区域下方的数据预览还为您提供有用的数据上下文。
@@ -72,7 +72,7 @@ Superset 本身不用来存储数据，而是通过连接您现有的 SQL 数据
 
 点击右上角的保存按钮，添加到一个新的看板
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 可以看到将图表添加到了看板中
 
