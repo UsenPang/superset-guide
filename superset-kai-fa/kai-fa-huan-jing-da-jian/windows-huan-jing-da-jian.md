@@ -1,8 +1,8 @@
----
-description: github上下载源码在本地解压
----
-
 # Windows 环境搭建
+
+## 前言
+
+不建议在windows环境下开发superset，你会遇到许多奇奇怪怪的问题。建议[在Linux环境下开发](linux-huan-jing-da-jian.md)，在你的Windows系统中，你可以使用WSL环境或者虚拟机，然后vscode远程开发。如果你还是想尝试一下，就是想要在windows环境上运行源码（像我一样），可以接着往下看。
 
 ## 克隆仓库
 
@@ -33,7 +33,7 @@ cd superset
 python3 -m venv venv 
 source venv/bin/activate
 
-# 安装外部依赖
+# 安装外部依赖(这一步会报错，往下看)
 pip install -r requirements/development.txt
 
 # 以可编辑（开发）模式安装 Superset
@@ -140,15 +140,15 @@ npm config set registry https://registry.npm.taobao.org --global
 npm ci
 
 
-# 请使用命令行工具cmd运行
+# 请使用命令行工具cmd运行！！！
 #构建前端资源
 npm run build
 
-#构建成功后启动前端
+#构建成功后启动前端(在dev-server模式下前端代码中的更改都会热更新)
 npm run dev-server
 ```
 
-浏览器访问[http://localhost:9000](http://localhost:9000)
+浏览器访问[http://localhost:9000](http://localhost:9000)访问[http://localhost:8088](http://localhost:8088)
 
 
 
