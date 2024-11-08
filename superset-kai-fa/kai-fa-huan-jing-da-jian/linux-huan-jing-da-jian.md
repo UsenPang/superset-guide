@@ -11,7 +11,7 @@ git clone https://github.com/apache/superset.git
 cd superset
 ```
 
-## docker-compose 启动
+## 方式一：docker-compose 启动
 
 ```
 docker compose up
@@ -23,7 +23,7 @@ docker compose up
 
 
 
-## 本地源码部署
+## 方式二：本地源码部署
 
 ### 后端 Flask Server
 
