@@ -114,7 +114,7 @@ make superset
 
 建议使用 nvm 管理节点环境。使用nvm安装node：
 
-<pre class="language-bash"><code class="lang-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+<pre class="language-bash"><code class="lang-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 #如果使用nvm命令出现 '-bash: nvm: command not found',请执行下面的命令或打开一个新的shell
 export NVM_DIR="$HOME/.nvm"
@@ -158,11 +158,7 @@ npm run dev-server
 
 为什么使用docker compose启动登录后是一个空白页面？
 
-<div data-full-width="true">
-
-<figure><img src="../../.gitbook/assets/image (17).png" alt="" width="375"><figcaption></figcaption></figure>
-
-</div>
+<div data-full-width="true"><figure><img src="../../.gitbook/assets/image (17).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 并且容器出现错误信息
 
