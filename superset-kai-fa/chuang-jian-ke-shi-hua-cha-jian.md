@@ -4,6 +4,10 @@
 
 Superset 中的可视化是用 JavaScript 或 TypeScript 实现的。Superset 预装了几种可视化类型（以下简称 “viz 插件”），可在 superset-frontend/plugins 目录下找到。可视化插件在 superset-frontend/src/visualizations/presets/MainPreset.js 中添加到应用程序中。
 
+<mark style="color:red;">注意：在开始下面的步骤前应确保你使用的是普通用户，使用root用户执行到</mark>yo @superset-ui/superset<mark style="color:red;">命令时会报错，目前还没有很好的解决办法。下面创建可视化插件的步骤可以跳过，直接下载可视化插件模板。</mark>
+
+{% file src="../.gitbook/assets/viz-plugin-template.tar.gz" %}
+
 
 
 ## 创建一个简单的可视化插件
